@@ -1,4 +1,3 @@
 # Akzhol
 # Yerassyl
 # Nurzhan
-# ss
