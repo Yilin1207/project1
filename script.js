@@ -4,6 +4,11 @@ const profileName = document.getElementById('profileName');
 const profileRole = document.getElementById('profileRole');
 const profilePhoto = document.getElementById('profilePhoto');
 const sideItems = document.querySelectorAll('.side-list li');
+const profilePhotos = {
+    frontend: 'assets/frontend-developer.jpeg',
+    backend: 'assets/backend-developer.jpeg',
+    devops: 'assets/devops-engineer.jpeg'
+};
 
 function updateProfileHeader(targetId) {
     const activePanel = document.getElementById(targetId);
@@ -14,7 +19,7 @@ function updateProfileHeader(targetId) {
 
     profileName.textContent = activePanel.dataset.name;
     profileRole.textContent = activePanel.dataset.role;
-    profilePhoto.src = activePanel.dataset.photo;
+    profilePhoto.src = profilePhotos[targetId] || activePanel.dataset.photo;
     profilePhoto.alt = activePanel.dataset.name;
 }
 
@@ -46,3 +51,5 @@ for (const item of sideItems) {
         if (button) button.click();
     });
 }
+
+updateProfileHeader('frontend');
