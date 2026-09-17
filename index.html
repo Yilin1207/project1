@@ -2,16 +2,211 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Мой сайт с JS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talent Board | Resume Profiles</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <h1>Сайт со стилями CSS и скриптом JS</h1>
-    <p>Нажмите на кнопку ниже,dada чтобы изменить цвет фона страницыee</p>
-    
-    <button onclick="changeBg()" style="padding: 10px 20px; font-size: 16px; cursor: pointer;">Сменить фон</button>
+<body data-theme="frontend">
+    <div class="page-shell">
+        <aside class="side-panel">
+            <div class="brand-block">
+                <span class="brand-mark">TB</span>
+                <div>
+                    <p class="brand-label">Talent Board</p>
+                    <h3>Recruiting Portal</h3>
+                </div>
+            </div>
+
+            <div class="mini-summary">
+                <p>Available Candidates</p>
+                <strong>03 profiles</strong>
+            </div>
+
+            <ul class="side-list">
+                <li class="active">Frontend Developer</li>
+                <li>Backend Developer</li>
+                <li>DevOps Engineer</li>
+            </ul>
+        </aside>
+
+        <main class="resume-panel">
+            <header class="profile-header">
+                <div class="avatar-wrap">
+                    <img id="profilePhoto" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80" alt="Фото кандидата">
+                </div>
+
+                <div class="profile-meta">
+                    <p class="eyebrow">CV Profile</p>
+                    <h1 id="profileName">Жумаханұлы Ақжол</h1>
+                    <p class="profession" id="profileRole">Frontend Developer</p>
+                </div>
+
+                <div class="profile-pill">Open to work</div>
+            </header>
+
+            <nav class="tabs" aria-label="Выбор резюме">
+                <button class="tab-button active" type="button" data-target="frontend">Frontend</button>
+                <button class="tab-button" type="button" data-target="backend">Backend</button>
+                <button class="tab-button" type="button" data-target="devops">DevOps</button>
+            </nav>
+
+            <main class="tab-panels">
+                <section id="frontend" class="tab-panel active" data-name="Жумаханұлы Ақжол" data-role="Frontend Developer" data-photo="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80" data-theme="frontend">
+                    <div class="content-grid">
+                        <div>
+                            <h2>About</h2>
+                            <p>
+                                Frontend developer focused on building responsive, modern, and user-friendly interfaces that are equally strong in design and performance.
+                            </p>
+                            <ul class="info-list">
+                                <li><span>City</span> <strong>Алматы</strong></li>
+                                <li><span>Experience</span> <strong>4 years</strong></li>
+                                <li><span>Focus</span> <strong>React / UI / UX</strong></li>
+                            </ul>
+                        </div>
+
+                        <div class="stats-box">
+                            <div class="stat-item">
+                                <span class="stat-number">8+</span>
+                                <span class="stat-label">projects</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">95%</span>
+                                <span class="stat-label">satisfaction</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-block">
+                        <h2>Experience</h2>
+                        <div class="timeline-item">
+                            <span class="date">2022 — Present</span>
+                            <h3>Frontend Developer</h3>
+                            <p>Built responsive interfaces, optimized UX, and collaborated on product delivery for multiple business applications.</p>
+                        </div>
+                    </div>
+
+                    <div class="content-block">
+                        <h2>Skills</h2>
+                        <div class="tags">
+                            <span>HTML5</span>
+                            <span>CSS3</span>
+                            <span>JavaScript</span>
+                            <span>React</span>
+                            <span>TypeScript</span>
+                            <span>Figma</span>
+                            <span>Tailwind</span>
+                            <span>UI/UX</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="backend" class="tab-panel" data-name="Әсіл Ерасыл" data-role="Backend Developer" data-photo="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80" data-theme="backend">
+                    <div class="content-grid">
+                        <div>
+                            <h2>About</h2>
+                            <p>
+                                Backend developer with a strong focus on API architecture, database design, and highly reliable business logic for growing platforms.
+                            </p>
+                            <ul class="info-list">
+                                <li><span>City</span> <strong>Астана</strong></li>
+                                <li><span>Experience</span> <strong>5 years</strong></li>
+                                <li><span>Focus</span> <strong>Node.js / APIs</strong></li>
+                            </ul>
+                        </div>
+
+                        <div class="stats-box">
+                            <div class="stat-item">
+                                <span class="stat-number">12</span>
+                                <span class="stat-label">services</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">99.9%</span>
+                                <span class="stat-label">uptime</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-block">
+                        <h2>Experience</h2>
+                        <div class="timeline-item">
+                            <span class="date">2021 — Present</span>
+                            <h3>Backend Developer</h3>
+                            <p>Designed and maintained APIs, improved database performance, and built resilient service integrations for multiple products.</p>
+                        </div>
+                    </div>
+
+                    <div class="content-block">
+                        <h2>Skills</h2>
+                        <div class="tags">
+                            <span>Node.js</span>
+                            <span>Express</span>
+                            <span>PostgreSQL</span>
+                            <span>MongoDB</span>
+                            <span>REST API</span>
+                            <span>Redis</span>
+                            <span>Docker</span>
+                            <span>Microservices</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="devops" class="tab-panel" data-name="Елеусіз Нұржан" data-role="DevOps Engineer" data-photo="https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=400&q=80" data-theme="devops">
+                    <div class="content-grid">
+                        <div>
+                            <h2>About</h2>
+                            <p>
+                                DevOps engineer focused on automation, CI/CD pipelines, infrastructure stability, and fast, safe deployment workflows for production systems.
+                            </p>
+                            <ul class="info-list">
+                                <li><span>City</span> <strong>Караганда</strong></li>
+                                <li><span>Experience</span> <strong>3 years</strong></li>
+                                <li><span>Focus</span> <strong>Cloud / CI/CD</strong></li>
+                            </ul>
+                        </div>
+
+                        <div class="stats-box">
+                            <div class="stat-item">
+                                <span class="stat-number">40%</span>
+                                <span class="stat-label">faster deploys</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">24/7</span>
+                                <span class="stat-label">monitoring</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-block">
+                        <h2>Experience</h2>
+                        <div class="timeline-item">
+                            <span class="date">2023 — Present</span>
+                            <h3>DevOps Engineer</h3>
+                            <p>Built deployment automation, configured cloud infrastructure, improved observability, and secured continuous release pipelines.</p>
+                        </div>
+                    </div>
+
+                    <div class="content-block">
+                        <h2>Skills</h2>
+                        <div class="tags">
+                            <span>Docker</span>
+                            <span>Kubernetes</span>
+                            <span>Linux</span>
+                            <span>CI/CD</span>
+                            <span>AWS</span>
+                            <span>Terraform</span>
+                            <span>GitHub Actions</span>
+                            <span>Monitoring</span>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </main>
+    </div>
 
     <script src="script.js"></script>
-    <p>Дизайн этого сайта вынесен в отдельный файл kkk style.css</p>
 </body>
 </html>
