@@ -23,6 +23,17 @@ function updateProfileHeader(targetId) {
     profilePhoto.alt = activePanel.dataset.name;
 }
 
+function selectProfile(targetId) {
+    const button = document.querySelector(`.tab-button[data-target="${targetId}"]`);
+    if (!button) return;
+    button.click();
+}
+
+function showHome() {
+    document.body.classList.add('home-active');
+    window.location.hash = 'home';
+}
+
 for (const button of tabButtons) {
     button.addEventListener('click', () => {
         const targetId = button.dataset.target;
@@ -49,6 +60,22 @@ for (const item of sideItems) {
         const index = Array.from(sideItems).indexOf(item);
         const button = tabButtons[index];
         if (button) button.click();
+    });
+}
+
+for (const card of document.querySelectorAll('[data-open-profile]')) {
+    card.addEventListener('click', () => {
+        document.body.classList.remove('home-active');
+        selectProfile(card.dataset.openProfile);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+}
+
+for (const control of document.querySelectorAll('[data-action="home"]')) {
+    control.addEventListener('click', (event) => {
+        event.preventDefault();
+        showHome();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 }
 

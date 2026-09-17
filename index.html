@@ -9,10 +9,26 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body data-theme="frontend">
+<body data-theme="frontend" class="home-active">
+    <section class="landing-page" aria-labelledby="landingTitle">
+        <header class="landing-header">
+            <a class="brand-block landing-brand" href="#home" data-action="home" aria-label="На главную"><span class="brand-mark">TB</span><span><span class="brand-label">Talent Board</span><strong>Кандидаты</strong></span></a>
+            <span class="landing-note">03 кандидата доступны</span>
+        </header>
+        <div class="landing-intro">
+            <p class="section-kicker">Команда специалистов</p>
+            <h1 id="landingTitle">Найдите нужного эксперта для вашего проекта.</h1>
+            <p>Откройте профиль кандидата, чтобы узнать об опыте, специализации и технологическом стеке.</p>
+        </div>
+        <div class="candidate-cards">
+            <button class="candidate-card frontend-card" type="button" data-open-profile="frontend"><img src="assets/frontend-developer.jpeg" alt="Ажол Жумаханулы"><span class="card-body"><span class="card-number">01</span><strong>Ажол Жумаханулы</strong><span>Frontend-разработчик</span><em>Открыть резюме <b>→</b></em></span></button>
+            <button class="candidate-card backend-card" type="button" data-open-profile="backend"><img src="assets/backend-developer.jpeg" alt="Ерасыл Усиль"><span class="card-body"><span class="card-number">02</span><strong>Ерасыл Усиль</strong><span>Backend-разработчик</span><em>Открыть резюме <b>→</b></em></span></button>
+            <button class="candidate-card devops-card" type="button" data-open-profile="devops"><img src="assets/devops-engineer.jpeg" alt="Нуржан Елеусиз"><span class="card-body"><span class="card-number">03</span><strong>Нуржан Елеусиз</strong><span>DevOps-инженер</span><em>Открыть резюме <b>→</b></em></span></button>
+        </div>
+    </section>
     <div class="page-shell">
         <aside class="side-panel">
-            <a class="brand-block" href="#frontend" aria-label="Talent Board"><span class="brand-mark">TB</span><span><span class="brand-label">Talent Board</span><strong>Кандидаты</strong></span></a>
+            <a class="brand-block" href="#home" data-action="home" aria-label="На главную"><span class="brand-mark">TB</span><span><span class="brand-label">Talent Board</span><strong>Кандидаты</strong></span></a>
             <div class="mini-summary"><span>Доступно профилей</span><strong>03</strong></div>
             <p class="nav-title">Список кандидатов</p>
             <ul class="side-list">
@@ -28,6 +44,7 @@
                 <div class="profile-meta"><p class="eyebrow">Профиль кандидата</p><h1 id="profileName">Ажол Жумаханулы</h1><p class="profession" id="profileRole">Frontend-разработчик</p></div>
                 <div class="profile-status"><span></span>Открыт к предложениям</div>
             </header>
+            <div class="resume-topline"><button class="back-button" type="button" data-action="home">← Все кандидаты</button><span>Резюме</span></div>
             <nav class="tabs" aria-label="Выбор резюме">
                 <button class="tab-button active" type="button" data-target="frontend">Frontend</button>
                 <button class="tab-button" type="button" data-target="backend">Backend</button>
