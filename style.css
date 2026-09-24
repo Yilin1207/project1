@@ -171,7 +171,7 @@ body {
     background: var(--canvas);
     font-size: 18px;
 }
-.task-output { min-height: 68px; }
+.new-div { margin: 20px auto 0; }
 .task-action {
     padding: 10px 16px;
     border: 0;

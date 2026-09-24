@@ -38,7 +38,6 @@ greetingButton.addEventListener('click', () => {
 
 // ===== Тапсырма 2: создание и удаление нового элемента =====
 const newElementButton = document.getElementById('newElementButton');
-const newElementOutput = document.getElementById('newElementOutput');
 const newDiv = document.createElement('div');
 newDiv.className = 'new-div';
 newDiv.textContent = 'Мен жаңа элементпін';
@@ -47,7 +46,7 @@ newElementButton.addEventListener('click', () => {
         newDiv.remove();
         newElementButton.textContent = 'Элементті қосу';
     } else {
-        newElementOutput.appendChild(newDiv);
+        document.body.appendChild(newDiv);
         newElementButton.textContent = 'Элементті алып тастау';
     }
 });
