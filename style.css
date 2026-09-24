@@ -28,3 +28,12 @@ body { min-height:100vh; padding:32px 18px; color:var(--ink); font-family:Inter,
 .content-block { margin-top:34px; }.content-block .section-kicker { margin:0 0 12px; }.timeline-item { padding:19px 20px; border:1px solid var(--line); border-radius:12px; }.date { color:var(--primary); font-size:.7rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase; }.timeline-item h3 { margin:8px 0 7px; font-size:1rem; }.tags { display:flex; flex-wrap:wrap; gap:8px; }.tags span { padding:8px 11px; border:1px solid var(--line); border-radius:7px; color:#465267; background:#fafbfd; font-size:.78rem; font-weight:600; }
 @media (max-width:800px) { body{padding:0}.landing-page{min-height:100vh;padding:24px 22px 34px}.landing-intro{margin:68px 0 36px}.candidate-cards{grid-template-columns:1fr}.candidate-card{display:grid;grid-template-columns:135px 1fr}.candidate-card img{height:100%;min-height:165px}.card-body{min-height:165px}.page-shell{grid-template-columns:1fr;border:0;border-radius:0}.side-panel{padding:20px;border-right:0;border-bottom:1px solid var(--line)}.mini-summary,.nav-title,.side-footer{display:none}.side-list{display:flex;overflow:auto;margin-top:22px}.side-list li{white-space:nowrap}.resume-panel{padding:28px 22px} }
 @media (max-width:560px) { .profile-header{align-items:flex-start;flex-wrap:wrap}.avatar-wrap{width:76px;height:76px}.profile-status{width:100%;order:3}.content-grid{grid-template-columns:1fr;gap:25px}.stats-box{max-width:300px}.tabs{gap:18px}.tab-button{font-size:.78rem} }
+
+.new-div.active {
+    color: #fff;
+    background: var(--primary);
+}
+
+.class-list-output {
+    font-weight: 600;
+}

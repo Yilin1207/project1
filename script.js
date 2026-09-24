@@ -38,6 +38,30 @@ newDiv.className = 'new-div';
 newDiv.textContent = 'Мен жаңа элементпін';
 document.body.appendChild(newDiv);
 
+const classToggleButton = document.createElement('button');
+classToggleButton.type = 'button';
+classToggleButton.textContent = 'active класын ауыстыру';
+document.body.appendChild(classToggleButton);
+
+const classListParagraph = document.createElement('p');
+classListParagraph.className = 'class-list-output';
+document.body.appendChild(classListParagraph);
+
+function showElementClasses() {
+    const classes = Array.from(newDiv.classList);
+    const classListText = classes.length > 0 ? classes.join(', ') : 'Кластар жоқ';
+
+    console.log('Элемент кластары:', classes);
+    classListParagraph.textContent = `Элемент кластары: ${classListText}`;
+}
+
+classToggleButton.addEventListener('click', () => {
+    newDiv.classList.toggle('active');
+    showElementClasses();
+});
+
+showElementClasses();
+
 const toggleParagraph = document.createElement('p');
 toggleParagraph.textContent = 'Бұл ауыспалы абзац';
 toggleParagraph.style.cursor = 'pointer';
