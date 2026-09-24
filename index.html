@@ -84,6 +84,22 @@
             </div>
         </main>
     </div>
+    <section class="table-task" aria-labelledby="tableTaskTitle">
+        <h2 id="tableTaskTitle">3-тапсырма: кесте құру</h2>
+        <form id="tableForm" class="table-controls">
+            <label>
+                Жолдар саны
+                <input id="rowCount" type="number" min="1" max="20" value="3" required>
+            </label>
+            <label>
+                Бағандар саны
+                <input id="columnCount" type="number" min="1" max="20" value="3" required>
+            </label>
+            <button type="submit">Кесте құру</button>
+        </form>
+        <p id="coloredCellCount">Боялған ұяшықтар саны: 0</p>
+        <div id="generatedTable" class="table-container" aria-live="polite"></div>
+    </section>
     <script src="script.js"></script>
 </body>
 </html>

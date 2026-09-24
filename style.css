@@ -37,3 +37,66 @@ body { min-height:100vh; padding:32px 18px; color:var(--ink); font-family:Inter,
 .class-list-output {
     font-weight: 600;
 }
+
+.table-task {
+    width: min(760px, 100%);
+    margin: 32px auto;
+    padding: 24px;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: var(--surface);
+}
+
+.table-task h2 {
+    margin-top: 0;
+}
+
+.table-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: end;
+}
+
+.table-controls label {
+    display: grid;
+    gap: 6px;
+    font-weight: 600;
+}
+
+.table-controls input,
+.table-controls button {
+    min-height: 40px;
+    padding: 8px 12px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    font: inherit;
+}
+
+.table-controls button {
+    color: #fff;
+    background: var(--primary);
+    cursor: pointer;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+.table-container table {
+    border-collapse: collapse;
+}
+
+.table-container td {
+    min-width: 56px;
+    height: 48px;
+    border: 1px solid var(--line);
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+.table-container td.colored {
+    color: #fff;
+    background: var(--primary);
+}

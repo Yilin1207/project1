@@ -62,6 +62,57 @@ classToggleButton.addEventListener('click', () => {
 
 showElementClasses();
 
+const tableForm = document.getElementById('tableForm');
+const rowCountInput = document.getElementById('rowCount');
+const columnCountInput = document.getElementById('columnCount');
+const tableContainer = document.getElementById('generatedTable');
+const coloredCellCount = document.getElementById('coloredCellCount');
+
+function countColoredCells() {
+    const count = tableContainer.querySelectorAll('td.colored').length;
+    coloredCellCount.textContent = `Боялған ұяшықтар саны: ${count}`;
+    return count;
+}
+
+function createTable(rowCount, columnCount) {
+    const table = document.createElement('table');
+    const tableBody = document.createElement('tbody');
+
+    for (let rowIndex = 0; rowIndex < rowCount; rowIndex += 1) {
+        const row = document.createElement('tr');
+
+        for (let columnIndex = 0; columnIndex < columnCount; columnIndex += 1) {
+            const cell = document.createElement('td');
+            cell.textContent = `${rowIndex + 1}:${columnIndex + 1}`;
+            row.appendChild(cell);
+        }
+
+        tableBody.appendChild(row);
+    }
+
+    table.appendChild(tableBody);
+    tableContainer.replaceChildren(table);
+    countColoredCells();
+}
+
+tableForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const rowCount = Number.parseInt(rowCountInput.value, 10);
+    const columnCount = Number.parseInt(columnCountInput.value, 10);
+
+    if (!Number.isInteger(rowCount) || !Number.isInteger(columnCount)) return;
+    createTable(rowCount, columnCount);
+});
+
+tableContainer.addEventListener('click', (event) => {
+    const cell = event.target.closest('td');
+    if (!cell || !tableContainer.contains(cell)) return;
+
+    cell.classList.toggle('colored');
+    countColoredCells();
+});
+
 const toggleParagraph = document.createElement('p');
 toggleParagraph.textContent = 'Бұл ауыспалы абзац';
 toggleParagraph.style.cursor = 'pointer';
