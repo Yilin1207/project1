@@ -1,36 +1,14 @@
-const tabButtons = document.querySelectorAll('.tab-button');
-const tabPanels = document.querySelectorAll('.tab-panel');
+// ===== Вкладки и резюме разработчиков =====
+const tabButtons = Array.from(document.querySelectorAll('[role="tab"]'));
+const tabPanels = Array.from(document.querySelectorAll('[role="tabpanel"]'));
 const profileName = document.getElementById('profileName');
 const profileRole = document.getElementById('profileRole');
 const profilePhoto = document.getElementById('profilePhoto');
-const sideItems = document.querySelectorAll('.side-list li');
 const profilePhotos = {
     frontend: 'assets/frontend-developer.jpeg',
     backend: 'assets/backend-developer.jpeg',
     devops: 'assets/devops-engineer.jpeg'
 };
-const themeToggleButtons = document.querySelectorAll('[data-theme-toggle]');
-
-function setColorMode(mode) {
-    const isDark = mode === 'dark';
-    document.body.dataset.colorMode = isDark ? 'dark' : 'light';
-
-    for (const button of themeToggleButtons) {
-        button.textContent = isDark ? 'Светлая тема' : 'Темная тема';
-        button.setAttribute('aria-pressed', String(isDark));
-    }
-}
-
-const savedColorMode = localStorage.getItem('color-mode') || 'light';
-setColorMode(savedColorMode);
-
-for (const button of themeToggleButtons) {
-    button.addEventListener('click', () => {
-        const nextMode = document.body.dataset.colorMode === 'dark' ? 'light' : 'dark';
-        setColorMode(nextMode);
-        localStorage.setItem('color-mode', nextMode);
-    });
-}
 
 function updateProfileHeader(targetId) {
     const activePanel = document.getElementById(targetId);
@@ -38,6 +16,10 @@ function updateProfileHeader(targetId) {
 
     const theme = activePanel.dataset.theme || 'frontend';
     document.body.dataset.theme = theme;
+    const isTasksPanel = targetId.startsWith('task-');
+    document.body.classList.toggle('tasks-active', isTasksPanel);
+
+    if (isTasksPanel) return;
 
     profileName.textContent = activePanel.dataset.name;
     profileRole.textContent = activePanel.dataset.role;
@@ -45,159 +27,99 @@ function updateProfileHeader(targetId) {
     profilePhoto.alt = activePanel.dataset.name;
 }
 
+// ===== Тапсырма 1: изменение текста «Сәлем, әлем!» =====
 const taskElement = document.getElementById('task-element');
-if (taskElement) {
-    taskElement.textContent = 'Сәлем, әлем!';
-}
+const greetingButton = document.getElementById('greetingButton');
+greetingButton.addEventListener('click', () => {
+    const isGreeting = taskElement.textContent === 'Сәлем, әлем!';
+    taskElement.textContent = isGreeting ? 'Бастапқы мәтін' : 'Сәлем, әлем!';
+    greetingButton.textContent = isGreeting ? 'Мәтінді өзгерту' : 'Бастапқы мәтінді қайтару';
+});
 
-const oldElement = document.querySelector('.old');
-if (oldElement) {
-    oldElement.remove();
-}
-
+// ===== Тапсырма 2: создание и удаление нового элемента =====
+const newElementButton = document.getElementById('newElementButton');
+const newElementOutput = document.getElementById('newElementOutput');
 const newDiv = document.createElement('div');
 newDiv.className = 'new-div';
 newDiv.textContent = 'Мен жаңа элементпін';
-document.body.appendChild(newDiv);
+newElementButton.addEventListener('click', () => {
+    if (newDiv.isConnected) {
+        newDiv.remove();
+        newElementButton.textContent = 'Элементті қосу';
+    } else {
+        newElementOutput.appendChild(newDiv);
+        newElementButton.textContent = 'Элементті алып тастау';
+    }
+});
 
-const classToggleButton = document.createElement('button');
-classToggleButton.type = 'button';
-classToggleButton.textContent = 'active класын ауыстыру';
-document.body.appendChild(classToggleButton);
+// ===== Тапсырма 3: изменение и восстановление стиля абзаца =====
+const toggleParagraph = document.getElementById('toggleParagraph');
+function toggleParagraphStyle() {
+    const isChanged = toggleParagraph.classList.toggle('changed');
+    toggleParagraph.setAttribute('aria-pressed', String(isChanged));
+}
+toggleParagraph.addEventListener('click', toggleParagraphStyle);
+toggleParagraph.addEventListener('keydown', (event) => {
+    if (event.key !== 'Enter' && event.key !== ' ') return;
+    event.preventDefault();
+    toggleParagraphStyle();
+});
 
-const classListParagraph = document.createElement('p');
-classListParagraph.className = 'class-list-output';
-document.body.appendChild(classListParagraph);
+// ===== Тапсырма 4: управление классом active =====
+const classTarget = document.getElementById('classTarget');
+const classToggleButton = document.getElementById('classToggleButton');
+const classListOutput = document.getElementById('classListOutput');
 
 function showElementClasses() {
-    const classes = Array.from(newDiv.classList);
-    const classListText = classes.length > 0 ? classes.join(', ') : 'Кластар жоқ';
-
+    const classes = Array.from(classTarget.classList);
     console.log('Элемент кластары:', classes);
-    classListParagraph.textContent = `Элемент кластары: ${classListText}`;
+    classListOutput.textContent = `Элемент кластары: ${classes.join(', ')}`;
 }
 
 classToggleButton.addEventListener('click', () => {
-    newDiv.classList.toggle('active');
+    const isActive = classTarget.classList.toggle('active');
+    classToggleButton.textContent = isActive ? 'active класын жою' : 'active класын қосу';
     showElementClasses();
 });
 
 showElementClasses();
 
-const tableForm = document.getElementById('tableForm');
-const rowCountInput = document.getElementById('rowCount');
-const columnCountInput = document.getElementById('columnCount');
-const tableContainer = document.getElementById('generatedTable');
-const coloredCellCount = document.getElementById('coloredCellCount');
+// ===== Переключение вкладок мышью и клавиатурой =====
+function activateTab(selectedButton, moveFocus = false) {
+    const targetId = selectedButton.dataset.target;
 
-function countColoredCells() {
-    const count = tableContainer.querySelectorAll('td.colored').length;
-    coloredCellCount.textContent = `Боялған ұяшықтар саны: ${count}`;
-    return count;
-}
-
-function createTable(rowCount, columnCount) {
-    const table = document.createElement('table');
-    const tableBody = document.createElement('tbody');
-
-    for (let rowIndex = 0; rowIndex < rowCount; rowIndex += 1) {
-        const row = document.createElement('tr');
-
-        for (let columnIndex = 0; columnIndex < columnCount; columnIndex += 1) {
-            const cell = document.createElement('td');
-            cell.textContent = `${rowIndex + 1}:${columnIndex + 1}`;
-            row.appendChild(cell);
-        }
-
-        tableBody.appendChild(row);
+    for (const button of tabButtons) {
+        const isSelected = button === selectedButton;
+        button.classList.toggle('active', isSelected);
+        button.setAttribute('aria-selected', String(isSelected));
+        button.tabIndex = isSelected ? 0 : -1;
     }
 
-    table.appendChild(tableBody);
-    tableContainer.replaceChildren(table);
-    countColoredCells();
-}
+    for (const panel of tabPanels) {
+        const isSelected = panel.id === targetId;
+        panel.classList.toggle('active', isSelected);
+        panel.hidden = !isSelected;
+    }
 
-tableForm.addEventListener('submit', (event) => {
-    event.preventDefault();
-
-    const rowCount = Number.parseInt(rowCountInput.value, 10);
-    const columnCount = Number.parseInt(columnCountInput.value, 10);
-
-    if (!Number.isInteger(rowCount) || !Number.isInteger(columnCount)) return;
-    createTable(rowCount, columnCount);
-});
-
-tableContainer.addEventListener('click', (event) => {
-    const cell = event.target.closest('td');
-    if (!cell || !tableContainer.contains(cell)) return;
-
-    cell.classList.toggle('colored');
-    countColoredCells();
-});
-
-const toggleParagraph = document.createElement('p');
-toggleParagraph.textContent = 'Бұл ауыспалы абзац';
-toggleParagraph.style.cursor = 'pointer';
-toggleParagraph.addEventListener('click', () => {
-    toggleParagraph.style.color = 'blue';
-    toggleParagraph.style.fontSize = '24px';
-});
-document.body.appendChild(toggleParagraph);
-
-function selectProfile(targetId) {
-    const button = document.querySelector(`.tab-button[data-target="${targetId}"]`);
-    if (!button) return;
-    button.click();
-}
-
-function showHome() {
-    document.body.classList.add('home-active');
-    window.location.hash = 'home';
+    updateProfileHeader(targetId);
+    if (moveFocus) selectedButton.focus();
 }
 
 for (const button of tabButtons) {
-    button.addEventListener('click', () => {
-        const targetId = button.dataset.target;
+    button.addEventListener('click', () => activateTab(button));
+    button.addEventListener('keydown', (event) => {
+        const currentIndex = tabButtons.indexOf(button);
+        let nextIndex = currentIndex;
 
-        for (const item of tabButtons) {
-            item.classList.toggle('active', item === button);
-        }
+        if (event.key === 'ArrowRight') nextIndex = (currentIndex + 1) % tabButtons.length;
+        if (event.key === 'ArrowLeft') nextIndex = (currentIndex - 1 + tabButtons.length) % tabButtons.length;
+        if (event.key === 'Home') nextIndex = 0;
+        if (event.key === 'End') nextIndex = tabButtons.length - 1;
+        if (nextIndex === currentIndex) return;
 
-        for (const panel of tabPanels) {
-            panel.classList.toggle('active', panel.id === targetId);
-        }
-
-        const activeIndex = Array.from(tabButtons).indexOf(button);
-        for (const item of sideItems) {
-            item.classList.toggle('active', item === sideItems[activeIndex]);
-        }
-
-        updateProfileHeader(targetId);
-    });
-}
-
-for (const item of sideItems) {
-    item.addEventListener('click', () => {
-        const index = Array.from(sideItems).indexOf(item);
-        const button = tabButtons[index];
-        if (button) button.click();
-    });
-}
-
-for (const card of document.querySelectorAll('[data-open-profile]')) {
-    card.addEventListener('click', () => {
-        document.body.classList.remove('home-active');
-        selectProfile(card.dataset.openProfile);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-}
-
-for (const control of document.querySelectorAll('[data-action="home"]')) {
-    control.addEventListener('click', (event) => {
         event.preventDefault();
-        showHome();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        activateTab(tabButtons[nextIndex], true);
     });
 }
 
-updateProfileHeader('frontend');
+activateTab(tabButtons[0]);

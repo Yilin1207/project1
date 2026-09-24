@@ -10,97 +10,82 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body data-theme="frontend" class="home-active">
-    <div id="task-element">Бастапқы мәтін</div>
-    <div class="old">Ескі элемент</div>
-    <section class="landing-page" aria-labelledby="landingTitle">
-        <header class="landing-header">
-            <a class="brand-block landing-brand" href="#home" data-action="home" aria-label="На главную"><span class="brand-mark">TB</span><span><span class="brand-label">Talent Board</span><strong>Кандидаты</strong></span></a>
-            <div class="landing-actions"><span class="landing-note">03 кандидата доступны</span><button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false">Темная тема</button></div>
-        </header>
-        <div class="landing-intro">
-            <p class="section-kicker">Команда специалистов</p>
-            <h1 id="landingTitle">Найдите нужного эксперта для вашего проекта.</h1>
-            <p>Откройте профиль кандидата, чтобы узнать об опыте, специализации и технологическом стеке.</p>
-        </div>
-        <div class="candidate-cards">
-            <button class="candidate-card frontend-card" type="button" data-open-profile="frontend"><img src="assets/frontend-developer.jpeg" alt="Ақжол Жумаханулы"><span class="card-body"><span class="card-number">01</span><strong>Ақжол Жумаханулы</strong><span>Frontend-разработчик</span><em>Открыть резюме <b>→</b></em></span></button>
-            <button class="candidate-card backend-card" type="button" data-open-profile="backend"><img src="assets/backend-developer.jpeg" alt="Ерасыл Әсіл"><span class="card-body"><span class="card-number">02</span><strong>Ерасыл Әсіл</strong><span>Backend-разработчик</span><em>Открыть резюме <b>→</b></em></span></button>
-            <button class="candidate-card devops-card" type="button" data-open-profile="devops"><img src="assets/devops-engineer.jpeg" alt="Нуржан Елеусиз"><span class="card-body"><span class="card-number">03</span><strong>Нуржан Елеусиз</strong><span>DevOps-инженер</span><em>Открыть резюме <b>→</b></em></span></button>
-        </div>
-    </section>
+<body data-theme="frontend">
     <div class="page-shell">
-        <aside class="side-panel">
-            <a class="brand-block" href="#home" data-action="home" aria-label="На главную"><span class="brand-mark">TB</span><span><span class="brand-label">Talent Board</span><strong>Кандидаты</strong></span></a>
-            <button class="theme-toggle side-theme-toggle" type="button" data-theme-toggle aria-pressed="false">Темная тема</button>
-            <div class="mini-summary"><span>Доступно профилей</span><strong>03</strong></div>
-            <p class="nav-title">Список кандидатов</p>
-            <ul class="side-list">
-                <li class="active"><span class="nav-index">01</span>Frontend-разработчик</li>
-                <li><span class="nav-index">02</span>Backend-разработчик</li>
-                <li><span class="nav-index">03</span>DevOps-инженер</li>
-            </ul>
-            <p class="side-footer">Все кандидаты готовы к новым предложениям.</p>
-        </aside>
+        <header class="workspace-header">
+            <div class="brand-block"><span class="brand-mark">TB</span><span><span class="brand-label">Talent Board</span><strong>Кандидаты и задания</strong></span></div>
+            <span class="section-count">3 резюме · 4 тапсырма</span>
+        </header>
         <main class="resume-panel">
+            <nav class="tabs" role="tablist" aria-label="Кандидаты и задания">
+                <button id="tab-frontend" class="tab-button active" type="button" role="tab" aria-selected="true" aria-controls="frontend" data-target="frontend">Frontend</button>
+                <button id="tab-backend" class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="backend" data-target="backend" tabindex="-1">Backend</button>
+                <button id="tab-devops" class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="devops" data-target="devops" tabindex="-1">DevOps</button>
+                <button id="tab-task-1" class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="task-1" data-target="task-1" tabindex="-1">Тапсырма 1</button>
+                <button id="tab-task-2" class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="task-2" data-target="task-2" tabindex="-1">Тапсырма 2</button>
+                <button id="tab-task-3" class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="task-3" data-target="task-3" tabindex="-1">Тапсырма 3</button>
+                <button id="tab-task-4" class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="task-4" data-target="task-4" tabindex="-1">Тапсырма 4</button>
+            </nav>
             <header class="profile-header">
                 <div class="avatar-wrap"><img id="profilePhoto" src="assets/frontend-developer.jpeg" alt="Фото кандидата"></div>
-<<<<<<< HEAD
-                <div class="profile-meta"><p class="eyebrow">Профиль кандидата</p><h1 id="profileName">Акжол Жумаханулы</h1><p class="profession" id="profileRole">Frontend-разработчик</p></div>
-=======
                 <div class="profile-meta"><p class="eyebrow">Профиль кандидата</p><h1 id="profileName">Ақжол Жумаханулы</h1><p class="profession" id="profileRole">Frontend-разработчик</p></div>
->>>>>>> 5f3a984eca8008f8338c0c2429562820f20e241a
                 <div class="profile-status"><span></span>Открыт к предложениям</div>
             </header>
-            <div class="resume-topline"><button class="back-button" type="button" data-action="home">← Все кандидаты</button><span>Резюме</span></div>
-            <nav class="tabs" aria-label="Выбор резюме">
-                <button class="tab-button active" type="button" data-target="frontend">Frontend</button>
-                <button class="tab-button" type="button" data-target="backend">Backend</button>
-                <button class="tab-button" type="button" data-target="devops">DevOps</button>
-            </nav>
             <div class="tab-panels">
-<<<<<<< HEAD
-                <section id="frontend" class="tab-panel active" data-name="Акжол Жумаханулы" data-role="Frontend-разработчик" data-theme="frontend">
-=======
-                <section id="frontend" class="tab-panel active" data-name="Ақжол Жумаханулы" data-role="Frontend-разработчик" data-theme="frontend">
->>>>>>> 5f3a984eca8008f8338c0c2429562820f20e241a
+                <section id="frontend" class="tab-panel active" role="tabpanel" aria-labelledby="tab-frontend" tabindex="0" data-name="Ақжол Жумаханулы" data-role="Frontend-разработчик" data-theme="frontend">
                     <div class="content-grid"><div class="about-card"><p class="section-kicker">О кандидате</p><h2>Создаёт понятные и быстрые веб-интерфейсы.</h2><p>Frontend-разработчик с вниманием к деталям, адаптивности и качественному пользовательскому опыту.</p><ul class="info-list"><li><span>Город</span><strong>Алматы</strong></li><li><span>Опыт</span><strong>1 год</strong></li><li><span>Специализация</span><strong>React / UI / UX</strong></li></ul></div><div class="stats-box"><div class="stat-item"><span class="stat-number">8+</span><span class="stat-label">проектов</span></div><div class="stat-item"><span class="stat-number">95%</span><span class="stat-label">довольных клиентов</span></div></div></div>
                     <div class="content-block"><p class="section-kicker">Опыт работы</p><div class="timeline-item"><span class="date">2025 — настоящее время</span><h3>Frontend-разработчик</h3><p>Разрабатывает адаптивные интерфейсы, улучшает UX и участвует в запуске веб-продуктов.</p></div></div>
                     <div class="content-block"><p class="section-kicker">Навыки</p><div class="tags"><span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>React</span><span>TypeScript</span><span>Figma</span><span>Tailwind</span><span>UI/UX</span></div></div>
                 </section>
-<<<<<<< HEAD
-                <section id="backend" class="tab-panel" data-name="Ерасыл Асил" data-role="Backend-разработчик" data-theme="backend">
-=======
-                <section id="backend" class="tab-panel" data-name="Ерасыл Әсіл" data-role="Backend-разработчик" data-theme="backend">
->>>>>>> 5f3a984eca8008f8338c0c2429562820f20e241a
+                <section id="backend" class="tab-panel" role="tabpanel" aria-labelledby="tab-backend" tabindex="0" hidden data-name="Ерасыл Әсіл" data-role="Backend-разработчик" data-theme="backend">
                     <div class="content-grid"><div class="about-card"><p class="section-kicker">О кандидате</p><h2>Проектирует надёжную серверную часть продуктов.</h2><p>Backend-разработчик, ориентированный на API, базы данных и устойчивую бизнес-логику для цифровых сервисов.</p><ul class="info-list"><li><span>Город</span><strong>Астана</strong></li><li><span>Опыт</span><strong>1 год</strong></li><li><span>Специализация</span><strong>Node.js / API</strong></li></ul></div><div class="stats-box"><div class="stat-item"><span class="stat-number">12</span><span class="stat-label">сервисов</span></div><div class="stat-item"><span class="stat-number">99,9%</span><span class="stat-label">доступность</span></div></div></div>
                     <div class="content-block"><p class="section-kicker">Опыт работы</p><div class="timeline-item"><span class="date">2025 — настоящее время</span><h3>Backend-разработчик</h3><p>Проектирует и поддерживает API, оптимизирует базы данных и интеграции сервисов.</p></div></div>
                     <div class="content-block"><p class="section-kicker">Навыки</p><div class="tags"><span>Node.js</span><span>Express</span><span>PostgreSQL</span><span>MongoDB</span><span>REST API</span><span>Redis</span><span>Docker</span><span>Микросервисы</span></div></div>
                 </section>
-                <section id="devops" class="tab-panel" data-name="Нуржан Елеусиз" data-role="DevOps-инженер" data-theme="devops">
+                <section id="devops" class="tab-panel" role="tabpanel" aria-labelledby="tab-devops" tabindex="0" hidden data-name="Нуржан Елеусиз" data-role="DevOps-инженер" data-theme="devops">
                     <div class="content-grid"><div class="about-card"><p class="section-kicker">О кандидате</p><h2>Автоматизирует поставку и эксплуатацию сервисов.</h2><p>DevOps-инженер с фокусом на CI/CD, стабильность инфраструктуры и безопасные процессы развёртывания.</p><ul class="info-list"><li><span>Город</span><strong>Шымкент</strong></li><li><span>Опыт</span><strong>1 год</strong></li><li><span>Специализация</span><strong>Облако / CI/CD</strong></li></ul></div><div class="stats-box"><div class="stat-item"><span class="stat-number">40%</span><span class="stat-label">быстрее релизы</span></div><div class="stat-item"><span class="stat-number">24/7</span><span class="stat-label">мониторинг</span></div></div></div>
                     <div class="content-block"><p class="section-kicker">Опыт работы</p><div class="timeline-item"><span class="date">2025 — настоящее время</span><h3>DevOps-инженер</h3><p>Настраивает автоматизацию развёртывания, облачную инфраструктуру и мониторинг систем.</p></div></div>
                     <div class="content-block"><p class="section-kicker">Навыки</p><div class="tags"><span>Docker</span><span>Kubernetes</span><span>Linux</span><span>CI/CD</span><span>AWS</span><span>Terraform</span><span>GitHub Actions</span><span>Мониторинг</span></div></div>
                 </section>
+                <section id="task-1" class="tab-panel" role="tabpanel" aria-labelledby="tab-task-1" tabindex="0" hidden>
+                    <div class="task-card">
+                        <p class="section-kicker">DOM · мәтінді өзгерту</p>
+                        <h2>Тапсырма 1: «Сәлем, әлем!»</h2>
+                        <p>Батырманы басқанда элементтің мәтіні өзгереді. Қайта басқанда бастапқы мәтін оралады.</p>
+                        <div id="task-element" class="task-example" aria-live="polite">Бастапқы мәтін</div>
+                        <button id="greetingButton" class="task-action" type="button">Мәтінді өзгерту</button>
+                    </div>
+                </section>
+                <section id="task-2" class="tab-panel" role="tabpanel" aria-labelledby="tab-task-2" tabindex="0" hidden>
+                    <div class="task-card">
+                        <p class="section-kicker">DOM · элемент жасау</p>
+                        <h2>Тапсырма 2: жаңа элемент</h2>
+                        <p>Батырма JavaScript арқылы жаңа элементті қосады немесе алып тастайды.</p>
+                        <button id="newElementButton" class="task-action" type="button">Элементті қосу</button>
+                        <div id="newElementOutput" class="task-output" aria-live="polite"></div>
+                    </div>
+                </section>
+                <section id="task-3" class="tab-panel" role="tabpanel" aria-labelledby="tab-task-3" tabindex="0" hidden>
+                    <div class="task-card">
+                        <p class="section-kicker">DOM · стильді өзгерту</p>
+                        <h2>Тапсырма 3: ауыспалы абзац</h2>
+                        <p>Абзацты басқанда түсі мен өлшемі өзгереді. Қайта басқанда бастапқы қалпына келеді.</p>
+                        <p id="toggleParagraph" class="toggle-paragraph" role="button" tabindex="0" aria-pressed="false">Бұл ауыспалы абзац</p>
+                    </div>
+                </section>
+                <section id="task-4" class="tab-panel" role="tabpanel" aria-labelledby="tab-task-4" tabindex="0" hidden>
+                    <div class="task-card">
+                        <p class="section-kicker">DOM · кластарды басқару</p>
+                        <h2>Тапсырма 4: active класы</h2>
+                        <p>Батырма элементтің <code>active</code> класын қосады немесе жояды. Кластар тізімі төменде және консольде көрінеді.</p>
+                        <div id="classTarget" class="task-example demo-element">Класс басқарылатын элемент</div>
+                        <button id="classToggleButton" class="task-action" type="button">active класын қосу</button>
+                        <p id="classListOutput" class="class-list-output" aria-live="polite"></p>
+                    </div>
+                </section>
             </div>
         </main>
     </div>
-    <section class="table-task" aria-labelledby="tableTaskTitle">
-        <h2 id="tableTaskTitle">3-тапсырма: кесте құру</h2>
-        <form id="tableForm" class="table-controls">
-            <label>
-                Жолдар саны
-                <input id="rowCount" type="number" min="1" max="20" value="3" required>
-            </label>
-            <label>
-                Бағандар саны
-                <input id="columnCount" type="number" min="1" max="20" value="3" required>
-            </label>
-            <button type="submit">Кесте құру</button>
-        </form>
-        <p id="coloredCellCount">Боялған ұяшықтар саны: 0</p>
-        <div id="generatedTable" class="table-container" aria-live="polite"></div>
-    </section>
     <script src="script.js"></script>
 </body>
 </html>
