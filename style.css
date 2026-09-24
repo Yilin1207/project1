@@ -1,6 +1,7 @@
 :root { --ink:#172033; --muted:#68738a; --line:#e6eaf0; --surface:#fff; --canvas:#f5f7fa; --primary:#2563eb; --soft:#eff6ff; --success:#159a68; }
 body[data-theme="backend"] { --primary:#0f9f73; --soft:#ecfdf5; }
 body[data-theme="devops"] { --primary:#7c3aed; --soft:#f5f3ff; }
+body[data-color-mode="dark"] { --ink:#edf2f7; --muted:#a6b1c2; --line:#334155; --surface:#172033; --canvas:#0d1421; --soft:#1e293b; --success:#34d399; }
 * { box-sizing:border-box; }
 html,body { margin:0; min-height:100%; }
 body { min-height:100vh; padding:32px 18px; color:var(--ink); font-family:Inter,Arial,sans-serif; background:var(--canvas); }
@@ -100,3 +101,23 @@ body { min-height:100vh; padding:32px 18px; color:var(--ink); font-family:Inter,
     color: #fff;
     background: var(--primary);
 }
+
+.landing-actions { display:flex; align-items:center; gap:10px; }
+.theme-toggle { min-height:36px; padding:8px 12px; border:1px solid var(--line); border-radius:8px; color:var(--ink); background:var(--surface); font:600 .75rem Inter,Arial,sans-serif; cursor:pointer; }
+.theme-toggle:hover { border-color:var(--primary); color:var(--primary); }
+.side-theme-toggle { align-self:flex-start; margin:22px 8px 0; }
+body[data-color-mode="dark"] .landing-note,
+body[data-color-mode="dark"] .candidate-card,
+body[data-color-mode="dark"] .side-panel,
+body[data-color-mode="dark"] .mini-summary,
+body[data-color-mode="dark"] .stat-item,
+body[data-color-mode="dark"] .tags span { background:var(--surface); }
+body[data-color-mode="dark"] .candidate-card { box-shadow:0 7px 20px rgba(0,0,0,.2); }
+body[data-color-mode="dark"] .side-panel { background:#121a2a; }
+body[data-color-mode="dark"] .side-list li { color:var(--muted); }
+body[data-color-mode="dark"] .side-list li:hover { background:#1e293b; color:var(--ink); }
+body[data-color-mode="dark"] .tags span { color:var(--ink); }
+body[data-color-mode="dark"] .profile-status { color:#8af0c5; background:#123c32; }
+body[data-color-mode="dark"] .avatar-wrap { background:#263449; }
+
+@media (max-width:560px) { .landing-actions { align-items:flex-end; flex-direction:column; gap:7px; } }

@@ -9,6 +9,28 @@ const profilePhotos = {
     backend: 'assets/backend-developer.jpeg',
     devops: 'assets/devops-engineer.jpeg'
 };
+const themeToggleButtons = document.querySelectorAll('[data-theme-toggle]');
+
+function setColorMode(mode) {
+    const isDark = mode === 'dark';
+    document.body.dataset.colorMode = isDark ? 'dark' : 'light';
+
+    for (const button of themeToggleButtons) {
+        button.textContent = isDark ? 'Светлая тема' : 'Темная тема';
+        button.setAttribute('aria-pressed', String(isDark));
+    }
+}
+
+const savedColorMode = localStorage.getItem('color-mode') || 'light';
+setColorMode(savedColorMode);
+
+for (const button of themeToggleButtons) {
+    button.addEventListener('click', () => {
+        const nextMode = document.body.dataset.colorMode === 'dark' ? 'light' : 'dark';
+        setColorMode(nextMode);
+        localStorage.setItem('color-mode', nextMode);
+    });
+}
 
 function updateProfileHeader(targetId) {
     const activePanel = document.getElementById(targetId);
