@@ -9,10 +9,28 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body data-theme="frontend">
+<body data-theme="frontend" class="home-active">
+    <div id="task-element">Бастапқы мәтін</div>
+    <div class="old">Ескі элемент</div>
+    <section class="landing-page" aria-labelledby="landingTitle">
+        <header class="landing-header">
+            <a class="brand-block landing-brand" href="#home" data-action="home" aria-label="На главную"><span class="brand-mark">TB</span><span><span class="brand-label">Talent Board</span><strong>Кандидаты</strong></span></a>
+            <span class="landing-note">03 кандидата доступны</span>
+        </header>
+        <div class="landing-intro">
+            <p class="section-kicker">Команда специалистов</p>
+            <h1 id="landingTitle">Найдите нужного эксперта для вашего проекта.</h1>
+            <p>Откройте профиль кандидата, чтобы узнать об опыте, специализации и технологическом стеке.</p>
+        </div>
+        <div class="candidate-cards">
+            <button class="candidate-card frontend-card" type="button" data-open-profile="frontend"><img src="assets/frontend-developer.jpeg" alt="Ақжол Жумаханулы"><span class="card-body"><span class="card-number">01</span><strong>Ақжол Жумаханулы</strong><span>Frontend-разработчик</span><em>Открыть резюме <b>→</b></em></span></button>
+            <button class="candidate-card backend-card" type="button" data-open-profile="backend"><img src="assets/backend-developer.jpeg" alt="Ерасыл Әсіл"><span class="card-body"><span class="card-number">02</span><strong>Ерасыл Әсіл</strong><span>Backend-разработчик</span><em>Открыть резюме <b>→</b></em></span></button>
+            <button class="candidate-card devops-card" type="button" data-open-profile="devops"><img src="assets/devops-engineer.jpeg" alt="Нуржан Елеусиз"><span class="card-body"><span class="card-number">03</span><strong>Нуржан Елеусиз</strong><span>DevOps-инженер</span><em>Открыть резюме <b>→</b></em></span></button>
+        </div>
+    </section>
     <div class="page-shell">
         <aside class="side-panel">
-            <a class="brand-block" href="#frontend" aria-label="Talent Board"><span class="brand-mark">TB</span><span><span class="brand-label">Talent Board</span><strong>Кандидаты</strong></span></a>
+            <a class="brand-block" href="#home" data-action="home" aria-label="На главную"><span class="brand-mark">TB</span><span><span class="brand-label">Talent Board</span><strong>Кандидаты</strong></span></a>
             <div class="mini-summary"><span>Доступно профилей</span><strong>03</strong></div>
             <p class="nav-title">Список кандидатов</p>
             <ul class="side-list">
@@ -25,21 +43,34 @@
         <main class="resume-panel">
             <header class="profile-header">
                 <div class="avatar-wrap"><img id="profilePhoto" src="assets/frontend-developer.jpeg" alt="Фото кандидата"></div>
+<<<<<<< HEAD
                 <div class="profile-meta"><p class="eyebrow">Профиль кандидата</p><h1 id="profileName">Акжол Жумаханулы</h1><p class="profession" id="profileRole">Frontend-разработчик</p></div>
+=======
+                <div class="profile-meta"><p class="eyebrow">Профиль кандидата</p><h1 id="profileName">Ақжол Жумаханулы</h1><p class="profession" id="profileRole">Frontend-разработчик</p></div>
+>>>>>>> 5f3a984eca8008f8338c0c2429562820f20e241a
                 <div class="profile-status"><span></span>Открыт к предложениям</div>
             </header>
+            <div class="resume-topline"><button class="back-button" type="button" data-action="home">← Все кандидаты</button><span>Резюме</span></div>
             <nav class="tabs" aria-label="Выбор резюме">
                 <button class="tab-button active" type="button" data-target="frontend">Frontend</button>
                 <button class="tab-button" type="button" data-target="backend">Backend</button>
                 <button class="tab-button" type="button" data-target="devops">DevOps</button>
             </nav>
             <div class="tab-panels">
+<<<<<<< HEAD
                 <section id="frontend" class="tab-panel active" data-name="Акжол Жумаханулы" data-role="Frontend-разработчик" data-theme="frontend">
+=======
+                <section id="frontend" class="tab-panel active" data-name="Ақжол Жумаханулы" data-role="Frontend-разработчик" data-theme="frontend">
+>>>>>>> 5f3a984eca8008f8338c0c2429562820f20e241a
                     <div class="content-grid"><div class="about-card"><p class="section-kicker">О кандидате</p><h2>Создаёт понятные и быстрые веб-интерфейсы.</h2><p>Frontend-разработчик с вниманием к деталям, адаптивности и качественному пользовательскому опыту.</p><ul class="info-list"><li><span>Город</span><strong>Алматы</strong></li><li><span>Опыт</span><strong>1 год</strong></li><li><span>Специализация</span><strong>React / UI / UX</strong></li></ul></div><div class="stats-box"><div class="stat-item"><span class="stat-number">8+</span><span class="stat-label">проектов</span></div><div class="stat-item"><span class="stat-number">95%</span><span class="stat-label">довольных клиентов</span></div></div></div>
                     <div class="content-block"><p class="section-kicker">Опыт работы</p><div class="timeline-item"><span class="date">2025 — настоящее время</span><h3>Frontend-разработчик</h3><p>Разрабатывает адаптивные интерфейсы, улучшает UX и участвует в запуске веб-продуктов.</p></div></div>
                     <div class="content-block"><p class="section-kicker">Навыки</p><div class="tags"><span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>React</span><span>TypeScript</span><span>Figma</span><span>Tailwind</span><span>UI/UX</span></div></div>
                 </section>
+<<<<<<< HEAD
                 <section id="backend" class="tab-panel" data-name="Ерасыл Асил" data-role="Backend-разработчик" data-theme="backend">
+=======
+                <section id="backend" class="tab-panel" data-name="Ерасыл Әсіл" data-role="Backend-разработчик" data-theme="backend">
+>>>>>>> 5f3a984eca8008f8338c0c2429562820f20e241a
                     <div class="content-grid"><div class="about-card"><p class="section-kicker">О кандидате</p><h2>Проектирует надёжную серверную часть продуктов.</h2><p>Backend-разработчик, ориентированный на API, базы данных и устойчивую бизнес-логику для цифровых сервисов.</p><ul class="info-list"><li><span>Город</span><strong>Астана</strong></li><li><span>Опыт</span><strong>1 год</strong></li><li><span>Специализация</span><strong>Node.js / API</strong></li></ul></div><div class="stats-box"><div class="stat-item"><span class="stat-number">12</span><span class="stat-label">сервисов</span></div><div class="stat-item"><span class="stat-number">99,9%</span><span class="stat-label">доступность</span></div></div></div>
                     <div class="content-block"><p class="section-kicker">Опыт работы</p><div class="timeline-item"><span class="date">2025 — настоящее время</span><h3>Backend-разработчик</h3><p>Проектирует и поддерживает API, оптимизирует базы данных и интеграции сервисов.</p></div></div>
                     <div class="content-block"><p class="section-kicker">Навыки</p><div class="tags"><span>Node.js</span><span>Express</span><span>PostgreSQL</span><span>MongoDB</span><span>REST API</span><span>Redis</span><span>Docker</span><span>Микросервисы</span></div></div>

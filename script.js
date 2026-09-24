@@ -23,6 +23,41 @@ function updateProfileHeader(targetId) {
     profilePhoto.alt = activePanel.dataset.name;
 }
 
+const taskElement = document.getElementById('task-element');
+if (taskElement) {
+    taskElement.textContent = 'Сәлем, әлем!';
+}
+
+const oldElement = document.querySelector('.old');
+if (oldElement) {
+    oldElement.remove();
+}
+
+const newDiv = document.createElement('div');
+newDiv.className = 'new-div';
+newDiv.textContent = 'Мен жаңа элементпін';
+document.body.appendChild(newDiv);
+
+const toggleParagraph = document.createElement('p');
+toggleParagraph.textContent = 'Бұл ауыспалы абзац';
+toggleParagraph.style.cursor = 'pointer';
+toggleParagraph.addEventListener('click', () => {
+    toggleParagraph.style.color = 'blue';
+    toggleParagraph.style.fontSize = '24px';
+});
+document.body.appendChild(toggleParagraph);
+
+function selectProfile(targetId) {
+    const button = document.querySelector(`.tab-button[data-target="${targetId}"]`);
+    if (!button) return;
+    button.click();
+}
+
+function showHome() {
+    document.body.classList.add('home-active');
+    window.location.hash = 'home';
+}
+
 for (const button of tabButtons) {
     button.addEventListener('click', () => {
         const targetId = button.dataset.target;
@@ -49,6 +84,22 @@ for (const item of sideItems) {
         const index = Array.from(sideItems).indexOf(item);
         const button = tabButtons[index];
         if (button) button.click();
+    });
+}
+
+for (const card of document.querySelectorAll('[data-open-profile]')) {
+    card.addEventListener('click', () => {
+        document.body.classList.remove('home-active');
+        selectProfile(card.dataset.openProfile);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+}
+
+for (const control of document.querySelectorAll('[data-action="home"]')) {
+    control.addEventListener('click', (event) => {
+        event.preventDefault();
+        showHome();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 }
 
