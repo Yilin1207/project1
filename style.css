@@ -11,6 +11,19 @@
 
 body[data-theme="backend"] { --primary: #0f9f73; --soft: #ecfdf5; }
 body[data-theme="devops"] { --primary: #7c3aed; --soft: #f5f3ff; }
+body[data-color-mode="dark"] {
+    color-scheme: dark;
+    --ink: #e8edf4;
+    --muted: #a4afbf;
+    --line: #343d4a;
+    --surface: #1d242e;
+    --canvas: #131820;
+    --soft: #26303d;
+    --success: #5bd6a0;
+}
+body[data-color-mode="dark"][data-theme="frontend"] { --soft: #202f46; }
+body[data-color-mode="dark"][data-theme="backend"] { --soft: #1c382f; }
+body[data-color-mode="dark"][data-theme="devops"] { --soft: #30263e; }
 
 * { box-sizing: border-box; }
 html, body { margin: 0; min-height: 100%; }
@@ -63,6 +76,40 @@ body {
     text-transform: uppercase;
 }
 .section-count { color: var(--muted); font-size: .85rem; font-weight: 600; }
+.brand-block { order: 0; }
+.section-count { order: 1; }
+.theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    order: 2;
+    gap: 10px;
+    padding: 7px 0;
+    border: 0;
+    color: var(--ink);
+    background: transparent;
+    font: 600 .82rem Inter, Arial, sans-serif;
+    cursor: pointer;
+}
+.switch-track {
+    display: flex;
+    align-items: center;
+    width: 38px;
+    height: 22px;
+    padding: 3px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--line);
+    transition: background .18s ease;
+}
+.switch-track span {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--surface);
+    transition: transform .18s ease;
+}
+body[data-color-mode="dark"] .switch-track { background: var(--primary); }
+body[data-color-mode="dark"] .switch-track span { transform: translateX(16px); }
 
 .resume-panel { padding: 38px 42px; }
 .tabs {
@@ -93,7 +140,7 @@ body {
     background: var(--surface);
     box-shadow: 0 2px 8px rgba(29, 39, 61, .1);
 }
-.tab-button:focus-visible, .task-action:focus-visible, .toggle-paragraph:focus-visible, .table-container button:focus-visible {
+.tab-button:focus-visible, .task-action:focus-visible, .toggle-paragraph:focus-visible, .table-container button:focus-visible, .theme-toggle:focus-visible {
     outline: 3px solid var(--primary);
     outline-offset: 2px;
 }
@@ -137,6 +184,8 @@ body {
     font-weight: 700;
 }
 .profile-status span { width: 7px; height: 7px; border-radius: 50%; background: var(--success); }
+body[data-color-mode="dark"] .profile-status { color: #8de0b9; background: #19372c; }
+body[data-color-mode="dark"] .avatar-wrap { background: #303a48; }
 .content-grid { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(230px, .8fr); gap: 44px; }
 .about-card h2 { max-width: 620px; margin: 7px 0 12px; font-size: clamp(1.35rem, 2.4vw, 1.72rem); letter-spacing: -.035em; line-height: 1.28; }
 .about-card > p:not(.section-kicker), .timeline-item p { margin: 0; color: var(--muted); font-size: .91rem; line-height: 1.7; }
@@ -154,6 +203,7 @@ body {
 .timeline-item h3 { margin: 8px 0 7px; font-size: 1rem; }
 .tags { display: flex; flex-wrap: wrap; gap: 8px; }
 .tags span { padding: 8px 11px; border: 1px solid var(--line); border-radius: 7px; color: #465267; background: #fafbfd; font-size: .78rem; font-weight: 600; }
+body[data-color-mode="dark"] .tags span { color: var(--ink); background: #252d38; }
 
 .task-card {
     padding: 28px;
@@ -182,7 +232,7 @@ body {
     cursor: pointer;
 }
 .toggle-paragraph { cursor: pointer; user-select: none; transition: color .2s ease, font-size .2s ease; }
-.toggle-paragraph.changed { color: #2563eb; font-size: 24px; }
+.toggle-paragraph.changed { color: var(--primary); font-size: 24px; }
 .table-controls { display: flex; flex-wrap: wrap; align-items: end; gap: 16px; }
 .table-controls label { display: grid; gap: 6px; font-weight: 600; }
 .table-controls input { width: 140px; padding: 10px; border: 1px solid var(--line); border-radius: 8px; font: inherit; }
@@ -194,7 +244,7 @@ body {
 .table-container table { border-collapse: collapse; }
 .table-container caption { margin-bottom: 10px; text-align: left; font-weight: 600; }
 .table-container td { padding: 0; border: 1px solid #94a3b8; }
-.table-container button { display: block; width: 60px; height: 48px; border: 0; background: transparent; color: #172033; font: inherit; cursor: pointer; }
+.table-container button { display: block; width: 60px; height: 48px; border: 0; background: transparent; color: var(--ink); font: inherit; cursor: pointer; }
 .table-container td[data-color] button { color: #172033; text-shadow: 0 0 3px #fff, 0 0 3px #fff; }
 .demo-element.active { color: #fff; background: var(--primary); }
 .class-list-output { font-weight: 600; }

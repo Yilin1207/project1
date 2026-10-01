@@ -1,4 +1,25 @@
 // ===== Вкладки и резюме разработчиков =====
+const themeToggle = document.getElementById('themeToggle');
+let savedColorMode = 'light';
+try {
+    savedColorMode = localStorage.getItem('color-mode') === 'dark' ? 'dark' : 'light';
+} catch {}
+
+function applyColorMode(mode) {
+    const isDark = mode === 'dark';
+    document.body.dataset.colorMode = isDark ? 'dark' : 'light';
+    themeToggle.setAttribute('aria-checked', String(isDark));
+    try {
+        localStorage.setItem('color-mode', document.body.dataset.colorMode);
+    } catch {}
+}
+
+applyColorMode(savedColorMode);
+themeToggle.addEventListener('click', () => {
+    const nextMode = document.body.dataset.colorMode === 'dark' ? 'light' : 'dark';
+    applyColorMode(nextMode);
+});
+
 const tabButtons = Array.from(document.querySelectorAll('[role="tab"]'));
 const tabPanels = Array.from(document.querySelectorAll('[role="tabpanel"]'));
 const profileName = document.getElementById('profileName');

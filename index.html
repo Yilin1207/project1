@@ -10,9 +10,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body data-theme="frontend">
+<body data-theme="frontend" data-color-mode="light">
     <div class="page-shell">
         <header class="workspace-header">
+            <button id="themeToggle" class="theme-toggle" type="button" role="switch" aria-checked="false" aria-label="Қараңғы тақырып">
+                <span>Қараңғы тақырып</span>
+                <span class="switch-track" aria-hidden="true"><span></span></span>
+            </button>
             <div class="brand-block"><span class="brand-mark">TB</span><span><span class="brand-label">Talent Board</span><strong>Кандидаты и задания</strong></span></div>
             <span class="section-count">3 резюме · 5 тапсырма</span>
         </header>
