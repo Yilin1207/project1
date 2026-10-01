@@ -114,6 +114,7 @@ const tableError = document.getElementById('tableError');
 const coloredCellCount = document.getElementById('coloredCellCount');
 const paintedCellCount = document.getElementById('paintedCellCount');
 const usedColorCount = document.getElementById('usedColorCount');
+const usedColorList = document.getElementById('usedColorList');
 
 function countCellsByColor(color) {
     const cells = tableContainer.querySelectorAll('td');
@@ -122,9 +123,33 @@ function countCellsByColor(color) {
 
 function updateColorStats() {
     const paintedCells = Array.from(tableContainer.querySelectorAll('td[data-color]'));
+    const colorCounts = new Map();
+    for (const cell of paintedCells) {
+        const color = cell.dataset.color;
+        colorCounts.set(color, (colorCounts.get(color) || 0) + 1);
+    }
+
     coloredCellCount.textContent = `Таңдалған түспен боялған ұяшықтар саны: ${countCellsByColor(cellColorInput.value)}`;
     paintedCellCount.textContent = `Барлық боялған ұяшықтар саны: ${paintedCells.length}`;
-    usedColorCount.textContent = `Қолданылған әртүрлі түстер саны: ${new Set(paintedCells.map((cell) => cell.dataset.color)).size}`;
+    usedColorCount.textContent = `Қолданылған әртүрлі түстер саны: ${colorCounts.size}`;
+
+    if (colorCounts.size === 0) {
+        const emptyItem = document.createElement('li');
+        emptyItem.textContent = 'Әзірге боялған ұяшық жоқ.';
+        usedColorList.replaceChildren(emptyItem);
+        return;
+    }
+
+    const items = Array.from(colorCounts, ([color, count]) => {
+        const item = document.createElement('li');
+        const swatch = document.createElement('span');
+        swatch.className = 'color-swatch';
+        swatch.style.backgroundColor = color;
+        swatch.setAttribute('aria-hidden', 'true');
+        item.append(swatch, `${color.toUpperCase()} — ${count} ұяшық`);
+        return item;
+    });
+    usedColorList.replaceChildren(...items);
 }
 
 function createTable(rows, columns) {

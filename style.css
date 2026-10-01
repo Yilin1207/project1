@@ -242,6 +242,10 @@ body[data-color-mode="dark"] .tags span { color: var(--ink); background: #252d38
 .table-error:empty { display: none; }
 .table-stats { display: flex; flex-wrap: wrap; gap: 8px 20px; margin: 16px 0; }
 .table-stats p { margin: 0; font-weight: 600; }
+.used-colors > p { margin: 0 0 8px; font-weight: 600; }
+.used-colors ul { display: flex; flex-wrap: wrap; gap: 8px 20px; margin: 0 0 20px; padding: 0; list-style: none; }
+.used-colors li { display: flex; align-items: center; gap: 8px; }
+.color-swatch { width: 18px; height: 18px; border: 1px solid var(--line); border-radius: 4px; }
 .table-container { overflow-x: auto; }
 .table-container table { border-collapse: collapse; }
 .table-container caption { margin-bottom: 10px; text-align: left; font-weight: 600; }
