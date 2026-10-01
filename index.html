@@ -105,7 +105,11 @@
                             <input id="cellColor" type="color" value="#2563eb">
                         </label>
                         <p id="tableError" class="table-error" role="alert"></p>
-                        <p id="coloredCellCount" aria-live="polite">Таңдалған түспен боялған ұяшықтар саны: 0</p>
+                        <div class="table-stats" aria-live="polite">
+                            <p id="coloredCellCount">Таңдалған түспен боялған ұяшықтар саны: 0</p>
+                            <p id="paintedCellCount">Барлық боялған ұяшықтар саны: 0</p>
+                            <p id="usedColorCount">Қолданылған әртүрлі түстер саны: 0</p>
+                        </div>
                         <div id="tableContainer" class="table-container"></div>
                     </div>
                 </section>

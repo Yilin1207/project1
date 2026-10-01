@@ -112,14 +112,19 @@ const cellColorInput = document.getElementById('cellColor');
 const tableContainer = document.getElementById('tableContainer');
 const tableError = document.getElementById('tableError');
 const coloredCellCount = document.getElementById('coloredCellCount');
+const paintedCellCount = document.getElementById('paintedCellCount');
+const usedColorCount = document.getElementById('usedColorCount');
 
 function countCellsByColor(color) {
     const cells = tableContainer.querySelectorAll('td');
     return Array.from(cells).filter((cell) => cell.dataset.color === color.toLowerCase()).length;
 }
 
-function updateColoredCellCount() {
+function updateColorStats() {
+    const paintedCells = Array.from(tableContainer.querySelectorAll('td[data-color]'));
     coloredCellCount.textContent = `Таңдалған түспен боялған ұяшықтар саны: ${countCellsByColor(cellColorInput.value)}`;
+    paintedCellCount.textContent = `Барлық боялған ұяшықтар саны: ${paintedCells.length}`;
+    usedColorCount.textContent = `Қолданылған әртүрлі түстер саны: ${new Set(paintedCells.map((cell) => cell.dataset.color)).size}`;
 }
 
 function createTable(rows, columns) {
@@ -153,7 +158,7 @@ function createTable(rows, columns) {
 
     table.appendChild(tbody);
     tableContainer.replaceChildren(table);
-    updateColoredCellCount();
+    updateColorStats();
     return table;
 }
 
@@ -176,10 +181,10 @@ tableContainer.addEventListener('click', (event) => {
         cell.style.backgroundColor = color;
     }
     button.setAttribute('aria-pressed', String(Boolean(cell.dataset.color)));
-    updateColoredCellCount();
+    updateColorStats();
 });
 
-cellColorInput.addEventListener('input', updateColoredCellCount);
+cellColorInput.addEventListener('input', updateColorStats);
 
 // ===== Переключение вкладок мышью и клавиатурой =====
 function activateTab(selectedButton, moveFocus = false) {

@@ -240,6 +240,8 @@ body[data-color-mode="dark"] .tags span { color: var(--ink); background: #252d38
 .cell-color-control input { width: 56px; height: 36px; cursor: pointer; }
 .table-error { color: #b91c1c; }
 .table-error:empty { display: none; }
+.table-stats { display: flex; flex-wrap: wrap; gap: 8px 20px; margin: 16px 0; }
+.table-stats p { margin: 0; font-weight: 600; }
 .table-container { overflow-x: auto; }
 .table-container table { border-collapse: collapse; }
 .table-container caption { margin-bottom: 10px; text-align: left; font-weight: 600; }
