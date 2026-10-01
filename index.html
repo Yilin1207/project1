@@ -14,7 +14,7 @@
     <div class="page-shell">
         <header class="workspace-header">
             <div class="brand-block"><span class="brand-mark">TB</span><span><span class="brand-label">Talent Board</span><strong>Кандидаты и задания</strong></span></div>
-            <span class="section-count">3 резюме · 4 тапсырма</span>
+            <span class="section-count">3 резюме · 5 тапсырма</span>
         </header>
         <main class="resume-panel">
             <nav class="tabs" role="tablist" aria-label="Кандидаты и задания">
@@ -25,6 +25,7 @@
                 <button id="tab-task-2" class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="task-2" data-target="task-2" tabindex="-1">Тапсырма 2</button>
                 <button id="tab-task-3" class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="task-3" data-target="task-3" tabindex="-1">Тапсырма 3</button>
                 <button id="tab-task-4" class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="task-4" data-target="task-4" tabindex="-1">Тапсырма 4</button>
+                <button id="tab-task-5" class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="task-5" data-target="task-5" tabindex="-1">Тапсырма 5</button>
             </nav>
             <header class="profile-header">
                 <div class="avatar-wrap"><img id="profilePhoto" src="assets/frontend-developer.jpeg" alt="Фото кандидата"></div>
@@ -80,6 +81,28 @@
                         <div id="classTarget" class="task-example demo-element">Класс басқарылатын элемент</div>
                         <button id="classToggleButton" class="task-action" type="button">active класын қосу</button>
                         <p id="classListOutput" class="class-list-output" aria-live="polite"></p>
+                    </div>
+                </section>
+                <section id="task-5" class="tab-panel" role="tabpanel" aria-labelledby="tab-task-5" tabindex="0" hidden>
+                    <div class="task-card">
+                        <p class="section-kicker">DOM · кестемен жұмыс</p>
+                        <h2>Тапсырма 5: кесте құру</h2>
+                        <p>Жолдар мен бағандар санын енгізіңіз (1–50). Түсті таңдаңыз да, ұяшықты басып бояңыз. Сол түспен қайта бассаңыз, бояуы алынады.</p>
+                        <form id="tableForm" class="table-controls">
+                            <label>Жолдар саны
+                                <input id="rowCount" type="number" min="1" max="50" step="1" value="3" required>
+                            </label>
+                            <label>Бағандар саны
+                                <input id="columnCount" type="number" min="1" max="50" step="1" value="3" required>
+                            </label>
+                            <button class="task-action" type="submit">Кесте құру</button>
+                        </form>
+                        <label class="cell-color-control">Ұяшық түсі
+                            <input id="cellColor" type="color" value="#2563eb">
+                        </label>
+                        <p id="tableError" class="table-error" role="alert"></p>
+                        <p id="coloredCellCount" aria-live="polite">Таңдалған түспен боялған ұяшықтар саны: 0</p>
+                        <div id="tableContainer" class="table-container"></div>
                     </div>
                 </section>
             </div>

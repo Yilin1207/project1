@@ -93,7 +93,7 @@ body {
     background: var(--surface);
     box-shadow: 0 2px 8px rgba(29, 39, 61, .1);
 }
-.tab-button:focus-visible, .task-action:focus-visible, .toggle-paragraph:focus-visible {
+.tab-button:focus-visible, .task-action:focus-visible, .toggle-paragraph:focus-visible, .table-container button:focus-visible {
     outline: 3px solid var(--primary);
     outline-offset: 2px;
 }
@@ -161,7 +161,7 @@ body {
     border-radius: 14px;
 }
 .task-card h2 { margin: 6px 0 10px; font-size: 1.5rem; }
-.task-card > p:not(.section-kicker, .class-list-output, .toggle-paragraph) { color: var(--muted); line-height: 1.6; }
+.task-card > p:not(.section-kicker, .class-list-output, .toggle-paragraph, .table-error) { color: var(--muted); line-height: 1.6; }
 .task-example, .new-div, .toggle-paragraph {
     width: fit-content;
     margin: 20px 0;
@@ -183,6 +183,19 @@ body {
 }
 .toggle-paragraph { cursor: pointer; user-select: none; transition: color .2s ease, font-size .2s ease; }
 .toggle-paragraph.changed { color: #2563eb; font-size: 24px; }
+.table-controls { display: flex; flex-wrap: wrap; align-items: end; gap: 16px; }
+.table-controls label { display: grid; gap: 6px; font-weight: 600; }
+.table-controls input { width: 140px; padding: 10px; border: 1px solid var(--line); border-radius: 8px; font: inherit; }
+.cell-color-control { display: flex; align-items: center; gap: 12px; margin-top: 20px; font-weight: 600; }
+.cell-color-control input { width: 56px; height: 36px; cursor: pointer; }
+.table-error { color: #b91c1c; }
+.table-error:empty { display: none; }
+.table-container { overflow-x: auto; }
+.table-container table { border-collapse: collapse; }
+.table-container caption { margin-bottom: 10px; text-align: left; font-weight: 600; }
+.table-container td { padding: 0; border: 1px solid #94a3b8; }
+.table-container button { display: block; width: 60px; height: 48px; border: 0; background: transparent; color: #172033; font: inherit; cursor: pointer; }
+.table-container td[data-color] button { color: #172033; text-shadow: 0 0 3px #fff, 0 0 3px #fff; }
 .demo-element.active { color: #fff; background: var(--primary); }
 .class-list-output { font-weight: 600; }
 

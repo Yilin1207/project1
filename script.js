@@ -83,6 +83,83 @@ classToggleButton.addEventListener('click', () => {
 
 showElementClasses();
 
+// ===== Тапсырма 5: создание таблицы, окрашивание и подсчёт ячеек =====
+const tableForm = document.getElementById('tableForm');
+const rowCountInput = document.getElementById('rowCount');
+const columnCountInput = document.getElementById('columnCount');
+const cellColorInput = document.getElementById('cellColor');
+const tableContainer = document.getElementById('tableContainer');
+const tableError = document.getElementById('tableError');
+const coloredCellCount = document.getElementById('coloredCellCount');
+
+function countCellsByColor(color) {
+    const cells = tableContainer.querySelectorAll('td');
+    return Array.from(cells).filter((cell) => cell.dataset.color === color.toLowerCase()).length;
+}
+
+function updateColoredCellCount() {
+    coloredCellCount.textContent = `Таңдалған түспен боялған ұяшықтар саны: ${countCellsByColor(cellColorInput.value)}`;
+}
+
+function createTable(rows, columns) {
+    if (!Number.isInteger(rows) || !Number.isInteger(columns) ||
+        rows < 1 || rows > 50 || columns < 1 || columns > 50) {
+        tableError.textContent = 'Жолдар мен бағандар саны 1–50 аралығындағы бүтін сан болуы керек.';
+        return;
+    }
+
+    tableError.textContent = '';
+    const table = document.createElement('table');
+    const caption = document.createElement('caption');
+    caption.textContent = `${rows} жол × ${columns} баған`;
+    table.appendChild(caption);
+    const tbody = document.createElement('tbody');
+
+    for (let rowIndex = 0; rowIndex < rows; rowIndex += 1) {
+        const row = document.createElement('tr');
+        for (let columnIndex = 0; columnIndex < columns; columnIndex += 1) {
+            const cell = document.createElement('td');
+            const button = document.createElement('button');
+            button.type = 'button';
+            button.textContent = `${rowIndex + 1}:${columnIndex + 1}`;
+            button.setAttribute('aria-label', `${rowIndex + 1}-жол, ${columnIndex + 1}-баған: бояу`);
+            button.setAttribute('aria-pressed', 'false');
+            cell.appendChild(button);
+            row.appendChild(cell);
+        }
+        tbody.appendChild(row);
+    }
+
+    table.appendChild(tbody);
+    tableContainer.replaceChildren(table);
+    updateColoredCellCount();
+    return table;
+}
+
+tableForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    createTable(Number(rowCountInput.value), Number(columnCountInput.value));
+});
+
+tableContainer.addEventListener('click', (event) => {
+    const button = event.target.closest('button');
+    if (!button || !tableContainer.contains(button)) return;
+
+    const cell = button.closest('td');
+    const color = cellColorInput.value.toLowerCase();
+    if (cell.dataset.color === color) {
+        delete cell.dataset.color;
+        cell.style.backgroundColor = '';
+    } else {
+        cell.dataset.color = color;
+        cell.style.backgroundColor = color;
+    }
+    button.setAttribute('aria-pressed', String(Boolean(cell.dataset.color)));
+    updateColoredCellCount();
+});
+
+cellColorInput.addEventListener('input', updateColoredCellCount);
+
 // ===== Переключение вкладок мышью и клавиатурой =====
 function activateTab(selectedButton, moveFocus = false) {
     const targetId = selectedButton.dataset.target;
